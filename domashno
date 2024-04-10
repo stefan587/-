@@ -1,0 +1,50 @@
+# Имена: Стефан Конев, №24
+# Клас: 8В
+
+class Dictionary:
+    def init(self):
+        self.definitions = {}
+
+    def add_word(self, word, definition):
+        word = word.lower()
+        if word in self.definitions:
+            print("Думата вече съществува.")
+        else:
+            self.definitions[word] = definition
+            print("Думата е успешно добавена в речника.")
+
+    def remove_word(self, word):
+        word = word.lower()
+        if word in self.definitions:
+            del self.definitions[word]
+            print("Думата е успешно изтрита от речника.")
+        else:
+            print("Думата не е намерена в речника.")
+
+    def define_word(self, word):
+        word = word.lower()
+        if word in self.definitions:
+            print(f"Дефиниция на '{word}': {self.definitions[word]}")
+        else:
+            print("Думата не е намерена в речника.")
+
+def main():
+    dictionary = Dictionary()
+    while True:
+        command = input("Въведете команда (add, remove, define, e за изход): ").strip().lower()
+        if command == 'e':
+            break
+        elif command == 'add':
+            word, definition = input("Въведете дума и нейната дефиниция: ").split(maxsplit=1)
+            dictionary.add_word(word, definition)
+        elif command == 'remove':
+            word = input("Въведете думата, която искате да изтриете: ")
+            dictionary.remove_word(word)
+        elif command == 'define':
+            word = input("Въведете думата, за която искате да видите дефиницията: ")
+            dictionary.define_word(word)
+        else:
+            print("Невалидна команда. Моля, опитайте отново.")
+
+if name == "main":
+    main()
